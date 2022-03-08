@@ -1,11 +1,11 @@
 export interface Product {
-  id: string;
+  id: number | string;
   name: string;
   prices: Price[];
 }
 
 export interface Price {
-  id: string;
-  price: string;
-  date: string;
+  id: string | number;
+  price: string | number;
+  date: string | Date;
 }
