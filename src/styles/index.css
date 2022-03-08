@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    font-family: 'Montserrat', sans-serif;
+}
+
+@layer components {
+    .wrapper {
+        @apply bg-gray-100 min-w-full min-h-screen;
+    }
+
+    .header {
+        @apply bg-white py-6 shadow;
+    }
+
+    .site_identity{
+        @apply font-black text-gray-800 subpixel-antialiased tracking-wider text-lg inline-block;
+    }
+
+    .body{
+        @apply max-w-[1200px] mx-auto py-8;
+    }
+}
