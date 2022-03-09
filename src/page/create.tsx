@@ -11,7 +11,7 @@ const Create = () => {
 
   return (
     <Layout>
-      <div className="w-1/2 mx-auto">
+      <div className="lg:w-1/2 w-full mx-auto">
         <Formik
           initialValues={{
             name: '',

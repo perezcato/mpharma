@@ -20,6 +20,6 @@
     }
 
     .body{
-        @apply max-w-[1200px] mx-auto py-8;
+        @apply max-w-[1200px] mx-auto py-8 px-6 lg:px-0;
     }
 }
