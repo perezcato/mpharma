@@ -10,7 +10,7 @@ const Index = () => {
 
   return (
     <Layout>
-      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-2 gap-8">
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-8">
         {
           stateProducts && stateProducts.length > 0 && stateProducts
             .map((product) => <ProductComponent key={product.id} product={product} />)
