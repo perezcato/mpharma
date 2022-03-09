@@ -1,6 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import ProductComponent, { getPrices} from "../components/product";
+import {store} from "../redux/store";
+import {BrowserRouter} from "react-router-dom";
+import { Provider } from 'react-redux';
 
 test('Property component is rendered on page', () => {
 
@@ -26,13 +29,19 @@ test('Property component is rendered on page', () => {
       ]
     };
 
-  render(<ProductComponent product={product} />);
+  render(
+    <BrowserRouter>
+      <Provider store={store}>
+        <ProductComponent product={product} />
+      </Provider>
+    </BrowserRouter>
+  );
 
   const price = getPrices(product.prices)
 
   const productName = screen.getByText(`${product.name}`);
-  const oldPrice1 = screen.getByText(`GH¢ ${+price[1].price}`);
-  const recentPrice = screen.getByText(`GH¢ ${+price[0].price}`);
+  const oldPrice1 = screen.getByText(`GH¢ ${(+price[1].price).toFixed(2)}`);
+  const recentPrice = screen.getByText(`GH¢ ${(+price[0].price).toFixed(2)}`);
 
   expect(productName).toBeInTheDocument();
   expect(oldPrice1).toBeInTheDocument();
