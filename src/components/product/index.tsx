@@ -7,13 +7,17 @@ interface Props {
 }
 
 export const getPrices = (prices: Price[]) => {
-  const convertedPriceDates = prices.map((price) => ({...price, date: new Date(price.date)}))
-    .sort((price1, price2) => {
-      // @ts-ignore
-      return price2.date - price1.date
-    })
+  if(prices.length > 1){
+    const convertedPriceDates = prices.map((price) => ({...price, date: new Date(price.date)}))
+      .sort((price1, price2) => {
+        // @ts-ignore
+        return price2.date - price1.date
+      })
 
-  return [convertedPriceDates[0], convertedPriceDates[1]]
+    return [convertedPriceDates[0], convertedPriceDates[1]]
+  }
+  return [prices[0]]
+
 }
 
 
@@ -25,9 +29,11 @@ const ProductComponent = ({product}: Props) => {
     <div className="bg-white shadow-md shadow-slate-200 py-4 px-4 space-y-1 rounded">
       <div className="text-base text-center font-semibold text-gray-700">{product?.name}</div>
       <div className="flex items-center space-x-2 justify-center">
-        <div className="text-sm font-medium line-through text-gray-500">GH¢ {+price[1].price}
-        </div>
-        <div>GH¢ {+price[0].price}</div>
+        {
+          price.length > 1 && ( <div className="text-sm font-medium line-through text-gray-500">GH¢ {(+price[1].price).toFixed(2)}</div>)
+        }
+
+        <div>GH¢ {(+price[0].price).toFixed(2)}</div>
       </div>
     </div>
   );

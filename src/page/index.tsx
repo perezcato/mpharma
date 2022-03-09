@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from "../components/layout/layout";
 import ProductComponent from "../components/product";
 import {Product} from "../types/product.type";
+import {useAppSelector} from "../components/hooks";
 
 const products: Product[] = [
   {
@@ -56,11 +57,14 @@ const products: Product[] = [
 
 
 const Index = () => {
+
+  const stateProducts = useAppSelector((state) => state.products.products)
+
   return (
     <Layout>
       <div className="grid grid-cols-4 gap-8">
         {
-          products.map((product) => <ProductComponent key={product.id} product={product} />)
+          stateProducts && stateProducts.length > 0 && stateProducts.map((product) => <ProductComponent key={product.id} product={product} />)
         }
 
       </div>
