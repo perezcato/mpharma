@@ -27,7 +27,9 @@ export const productSlice = createSlice({
       state.products = state.products.filter((product) => product.id !== action.payload.id)
     },
     updateProduct: (state, action: PayloadAction<Product>) => {
-      state.products = [...state.products.filter((product) => product.id !== action.payload.id), action.payload]
+      const item = state.products.findIndex((prod) => prod.id === action.payload.id)
+      console.log('this is the item', item)
+      state.products[item] = action.payload
     }
   },
   extraReducers: (builder) => {
