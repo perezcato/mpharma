@@ -1,4 +1,4 @@
-import {createAsyncThunk , createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {Product} from "../types/product.type";
 
 export interface ProductState {
@@ -19,7 +19,11 @@ export const fetchProducts = createAsyncThunk('products/fetchProducts', async ()
 export const productSlice = createSlice({
   name: 'product',
   initialState,
-  reducers: {},
+  reducers: {
+    addProduct: (state, action: PayloadAction<Product>) => {
+      state.products.push(action.payload)
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchProducts.fulfilled, (state, action) => {
       state.products = action.payload.products;
@@ -28,7 +32,7 @@ export const productSlice = createSlice({
   }
 })
 
-
+export const {addProduct} = productSlice.actions;
 
 export default productSlice.reducer
 

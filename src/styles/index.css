@@ -12,7 +12,7 @@
     }
 
     .header {
-        @apply bg-white py-6 shadow-md shadow-slate-200;
+        @apply bg-white py-6 shadow-md shadow-slate-200 ;
     }
 
     .site_identity{
