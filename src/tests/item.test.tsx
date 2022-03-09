@@ -1,8 +1,9 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import ProductComponent, { getPrices} from "./index";
+import ProductComponent, { getPrices} from "../components/product";
 
-test('renders learn react link', () => {
+test('Property component is rendered on page', () => {
+
   const product = {
       "id": 1,
       "name": "Exforge 10mg",

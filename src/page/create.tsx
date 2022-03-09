@@ -1,6 +1,6 @@
 import React from 'react';
 import Layout from "../components/layout/layout";
-import {Formik, FormikHelpers} from 'formik'
+import {Formik} from 'formik'
 import {Product} from "../types/product.type";
 import {addProduct} from "../redux/reducers";
 import {useAppDispatch} from "../components/hooks";
@@ -43,6 +43,7 @@ const Create = () => {
               <form onSubmit={formik.handleSubmit} className="space-y-6 mt-20">
                 <div className="w-full">
                   <input
+                    data-testid="name"
                     value={formik.values.name}
                     name="name"
                     required
@@ -55,6 +56,7 @@ const Create = () => {
                 </div>
                 <div className="w-full">
                   <input
+                    data-testid="price"
                     value={formik.values.price}
                     name={'price'}
                     required
@@ -66,6 +68,7 @@ const Create = () => {
                 </div>
 
                 <button
+                  data-testid="submit"
                   type={'submit'}
                   className="w-full bg-blue-500 text-white text-sm font-semibold py-3 rounded">
                   Submit
