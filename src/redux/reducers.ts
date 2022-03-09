@@ -12,7 +12,7 @@ const initialState: ProductState = {
 }
 
 export const fetchProducts = createAsyncThunk('products/fetchProducts', async () => {
-  const response = await fetch('http://www.mocky.io/v2/5c3e15e63500006e003e9795');
+  const response = await fetch('https://www.mocky.io/v2/5c3e15e63500006e003e9795');
   return await response.json()
 })
 
