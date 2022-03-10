@@ -49,5 +49,5 @@ build docker image and run project
 Running tests
 
 ```bash
-    npm run tests
+    npm run test
 ```
